@@ -6,6 +6,14 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+### Changed
+
+### Fixed
+
+## [1.1.0] - 2025-03-23
+
+### Added
+
 - Added link to github
 
 ### Changed
