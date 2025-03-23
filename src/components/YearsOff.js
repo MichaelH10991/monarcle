@@ -25,7 +25,7 @@ const YearsOff = ({ guess, answer, setLoading, index }) => {
     doThing();
   }, [yearsOff]);
 
-  return `${number} years off...`;
+  return `+/-${number} yrs`;
 };
 
 export default YearsOff;

@@ -30,9 +30,9 @@ const Correct = ({ value, monarch, loading, setLoading, index }) => {
 const Incorrect = ({ value, monarch, loading, setLoading, hint, index }) => {
   return (
     <div className={`previous-guess ${!loading[index] && "incorrect"}`}>
-      <div style={{ whiteSpace: "nowrap" }}>{value}</div>
-      <div>{!loading[index] && hint}</div>
-      <div>
+      <div style={{ minWidth: "80px" }}>{value}</div>
+      <div style={{}}>{!loading[index] && hint}</div>
+      <div style={{ whiteSpace: "nowrap" }}>
         <YearsOff
           guess={findMonarch(data, value).reignStarted}
           answer={monarch.reignStarted}
@@ -84,16 +84,20 @@ const MainPage = () => {
   const monarch = getMonarch(data);
 
   const handleSubmit = (value) => {
+    if (!value) {
+      return;
+    }
+
     setLoading((loadingStates) => ({ ...loadingStates, [guessCount]: true }));
     setGuessCount((curCount) => curCount + 1);
 
-    if (!value) {
-      setLoading((loadingStates) => ({
-        ...loadingStates,
-        [guessCount]: false,
-      }));
-      return;
-    }
+    // if (!value) {
+    //   setLoading((loadingStates) => ({
+    //     ...loadingStates,
+    //     [guessCount]: false,
+    //   }));
+    //   return;
+    // }
 
     const correct = value.toLowerCase() === monarch.name.toLocaleLowerCase();
 
@@ -163,6 +167,7 @@ const MainPage = () => {
           justifyContent: "center",
           alignItems: "center",
           gap: "10px",
+          marginBottom: "20px",
         }}
       >
         <GitHubIcon />

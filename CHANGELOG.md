@@ -7,11 +7,15 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Added link to github
-- Fix documentation
 
 ### Changed
 
+- Updated "guess" button styling
+- updated css for the hint text to better align
+
 ### Fixed
+
+- Fix documentation
 
 ## [1.0.0] - 2025-03-23
 
