@@ -1,0 +1,32 @@
+.drop-down {
+  background: #fff;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  top: 36px;
+  max-height: 134px;
+
+  overflow: hidden scroll;
+  position: absolute;
+  width: 100%;
+  border: 1px solid;
+  scrollbar-color: #ff0000 #243151;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+.drop-down-item {
+  all: unset;
+  background-color: none;
+  border-bottom: 1px solid #d3d3d3;
+  color: #ffffff;
+  padding: 9px;
+  background: #0f172a;
+}
+
+.drop-down-item:hover {
+  background-color: #243151;
+}

@@ -1,0 +1,155 @@
+[
+  {
+    "name": "William II",
+    "gender": "m",
+    "src": "William-II.jpg",
+    "reignStarted": "1087"
+  },
+  {
+    "name": "Richard III",
+    "gender": "m",
+    "src": "Richard-III.jpg",
+    "reignStarted": "1483"
+  },
+  {
+    "name": "Henry VII",
+    "gender": "m",
+    "src": "Henry-VII.jpg",
+    "reignStarted": "1485"
+  },
+  { "name": "Jane", "gender": "f", "src": "Jane.jpg", "reignStarted": "1553" },
+  {
+    "name": "Edward VI",
+    "gender": "m",
+    "src": "Edward-VI.jpg",
+    "reignStarted": "1547"
+  },
+  {
+    "name": "Henry IV",
+    "gender": "m",
+    "src": "Henry-IV.jpg",
+    "reignStarted": "1399"
+  },
+  {
+    "name": "Henry VIII",
+    "gender": "m",
+    "src": "Henry-VIII.jpg",
+    "reignStarted": "1509",
+    "hints": ["some hint", "some other"]
+  },
+  {
+    "name": "John",
+    "gender": "m",
+    "src": "John.jpg",
+    "reignStarted": "1199",
+    "hints": [
+      "They ruled England from 1199 to 1216 and were the youngest son of Henry II and Eleanor of Aquitaine.",
+      "They lost most of England’s territories in France, including Normandy, after their military defeat to King Philip II of France.",
+      "They are infamous for signing the Magna Carta in 1215, a document that limited the power of the monarchy and laid the foundation for constitutional government.",
+      "They were excommunicated by Pope Innocent III in 1209 due to a dispute over the appointment of the Archbishop of Canterbury.",
+      "Their reign was marked by heavy taxation and conflicts with his barons, leading to the First Barons' War (1215-1217)."
+    ]
+  },
+  {
+    "name": "Edward III",
+    "gender": "m",
+    "src": "Edward-III.jpg",
+    "reignStarted": "1327"
+  },
+  {
+    "name": "Richard I",
+    "gender": "m",
+    "src": "Richard-I.jpg",
+    "reignStarted": "1189"
+  },
+  {
+    "name": "Elizabeth I",
+    "gender": "f",
+    "src": "Elizabeth-I.jpg",
+    "reignStarted": "1558"
+  },
+  {
+    "name": "Richard II",
+    "gender": "m",
+    "src": "Richard-II.jpg",
+    "reignStarted": "1377"
+  },
+  {
+    "name": "Philip",
+    "gender": "m",
+    "src": "Philip.jpg",
+    "reignStarted": "1554"
+  },
+  {
+    "name": "Henry V",
+    "gender": "m",
+    "src": "Henry-V.jpeg",
+    "reignStarted": "1413"
+  },
+  {
+    "name": "William I",
+    "gender": "m",
+    "src": "William-I.jpg",
+    "reignStarted": "1066"
+  },
+  {
+    "name": "Mary I",
+    "gender": "f",
+    "src": "Mary-I.jpg",
+    "reignStarted": "1553"
+  },
+  {
+    "name": "Stephen",
+    "gender": "m",
+    "src": "Stephen.jpg",
+    "reignStarted": "1135"
+  },
+  {
+    "name": "Henry I",
+    "gender": "m",
+    "src": "Henry-I.jpg",
+    "reignStarted": "1100"
+  },
+  {
+    "name": "Henry VI",
+    "gender": "m",
+    "src": "Henry-VI.jpg",
+    "reignStarted": "1461"
+  },
+  {
+    "name": "Edward II",
+    "gender": "m",
+    "src": "Edward-II.jpg",
+    "reignStarted": "1307"
+  },
+  {
+    "name": "Edward I",
+    "gender": "m",
+    "src": "Edward-I.jpg",
+    "reignStarted": "1272"
+  },
+  {
+    "name": "Henry III",
+    "gender": "m",
+    "src": "Henry-III.jpg",
+    "reignStarted": "1216"
+  },
+  {
+    "name": "Edward V",
+    "gender": "m",
+    "src": "Edward-V.jpg",
+    "reignStarted": "1483"
+  },
+  {
+    "name": "Edward IV",
+    "gender": "m",
+    "src": "Edward-IV.jpg",
+    "reignStarted": "1461"
+  },
+  {
+    "name": "Henry II",
+    "gender": "m",
+    "src": "Henry-II.jpg",
+    "reignStarted": "1154"
+  }
+]

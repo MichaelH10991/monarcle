@@ -1,0 +1,169 @@
+.main-page-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  height: 50px;
+  background-color: none;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-bottom: 1px solid white;
+
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.prompt-container {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+
+  width: 100%;
+
+  margin: 0 0.5rem;
+  max-width: 32rem;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  object-fit: cover;
+  max-width: 13rem;
+  border-radius: 20px;
+}
+
+.monarch-image {
+  position: relative;
+}
+
+.positive-feedback,
+.negative-feedback,
+.feedback {
+  position: absolute;
+  height: 66px;
+  width: 100%;
+  bottom: 3px;
+  border: 2px solid;
+  font-weight: 600;
+
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.positive-feedback {
+  background: #30e1506b;
+  border: none;
+  color: black;
+}
+
+.negative-feedback {
+  background: #e13030cc;
+  border: none;
+}
+
+/* guess stuff */
+
+.guess-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.guess-textbox-container {
+  position: relative;
+  flex-grow: 1;
+}
+
+.guess-textbox {
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  border: 2px solid white;
+  background: none;
+  border-radius: 3px;
+  color: white;
+  padding: 8px;
+  font-size: 100%;
+}
+
+.guess-container {
+  position: relative;
+}
+
+.guess-button {
+  border: 2px solid white;
+  background: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+}
+
+.guesses-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 50px;
+}
+
+.guesses-left,
+.previous-guess {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 9px;
+
+  border: 1px solid gray;
+  border-radius: 3px;
+  min-height: 30px;
+  gap: 30px;
+
+  background-color: #243151;
+}
+
+.guesses-left {
+  justify-content: center;
+}
+
+.correct {
+  background: #3a8d3a;
+}
+
+.incorrect {
+  background: #d63535;
+}
+
+.hint-button {
+  position: absolute;
+  left: 76%;
+  top: 1%;
+  border-radius: 50%;
+  height: 33px;
+  width: 33px;
+  border: none;
+  background: #243151;
+  font-weight: 900;
+  font-size: 21px;
+  color: white;
+}
