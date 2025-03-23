@@ -6,7 +6,11 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- meta infomation
+
 ### Changed
+
+- info flex gap
 
 ### Fixed
 
