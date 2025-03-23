@@ -1,15 +1,9 @@
 [
   {
-    "name": "William II",
+    "name": "Richard II",
     "gender": "m",
-    "src": "William-II.jpg",
-    "reignStarted": "1087"
-  },
-  {
-    "name": "Richard III",
-    "gender": "m",
-    "src": "Richard-III.jpg",
-    "reignStarted": "1483"
+    "src": "Richard-II.jpg",
+    "reignStarted": "1377"
   },
   {
     "name": "Henry VII",
@@ -17,12 +11,86 @@
     "src": "Henry-VII.jpg",
     "reignStarted": "1485"
   },
+  {
+    "name": "Henry VIII",
+    "gender": "m",
+    "src": "Henry-VIII.jpg",
+    "reignStarted": "1509",
+    "hints": ["some hint", "some other"]
+  },
+  {
+    "name": "Mary I",
+    "gender": "f",
+    "src": "Mary-I.jpg",
+    "reignStarted": "1553"
+  },
+  {
+    "name": "Richard III",
+    "gender": "m",
+    "src": "Richard-III.jpg",
+    "reignStarted": "1483"
+  },
   { "name": "Jane", "gender": "f", "src": "Jane.jpg", "reignStarted": "1553" },
+  {
+    "name": "Edward I",
+    "gender": "m",
+    "src": "Edward-I.jpg",
+    "reignStarted": "1272"
+  },
+  {
+    "name": "Henry VI",
+    "gender": "m",
+    "src": "Henry-VI.jpg",
+    "reignStarted": "1461",
+    "hints": [
+      "He became King of England in 1422 at just nine months old, making him the youngest person ever to inherit the English throne.",
+      "His reign saw the loss of nearly all English territories in France, including Normandy, during the latter stages of the Hundred Years' War.",
+      "He was known for his piety and founded Eton College and King’s College, Cambridge, which remain prestigious institutions today.",
+      "His mental instability led to periods of incapacity, during which Richard, Duke of York, was appointed Protector of the Realm.",
+      "His rule was marked by the Wars of the Roses, a series of conflicts between the rival houses of Lancaster and York, ultimately leading to his deposition and eventual death in the Tower of London."
+    ]
+  },
+  {
+    "name": "Henry III",
+    "gender": "m",
+    "src": "Henry-III.jpg",
+    "reignStarted": "1216"
+  },
+  {
+    "name": "Henry V",
+    "gender": "m",
+    "src": "Henry-V.jpeg",
+    "reignStarted": "1413"
+  },
+  {
+    "name": "William I",
+    "gender": "m",
+    "src": "William-I.jpg",
+    "reignStarted": "1066"
+  },
+  {
+    "name": "Richard I",
+    "gender": "m",
+    "src": "Richard-I.jpg",
+    "reignStarted": "1189"
+  },
+  {
+    "name": "Henry I",
+    "gender": "m",
+    "src": "Henry-I.jpg",
+    "reignStarted": "1100"
+  },
   {
     "name": "Edward VI",
     "gender": "m",
     "src": "Edward-VI.jpg",
     "reignStarted": "1547"
+  },
+  {
+    "name": "Henry II",
+    "gender": "m",
+    "src": "Henry-II.jpg",
+    "reignStarted": "1154"
   },
   {
     "name": "Henry IV",
@@ -31,11 +99,34 @@
     "reignStarted": "1399"
   },
   {
-    "name": "Henry VIII",
+    "name": "William II",
     "gender": "m",
-    "src": "Henry-VIII.jpg",
-    "reignStarted": "1509",
-    "hints": ["some hint", "some other"]
+    "src": "William-II.jpg",
+    "reignStarted": "1087"
+  },
+  {
+    "name": "Elizabeth I",
+    "gender": "f",
+    "src": "Elizabeth-I.jpg",
+    "reignStarted": "1558"
+  },
+  {
+    "name": "Edward II",
+    "gender": "m",
+    "src": "Edward-II.jpg",
+    "reignStarted": "1307"
+  },
+  {
+    "name": "Edward III",
+    "gender": "m",
+    "src": "Edward-III.jpg",
+    "reignStarted": "1327"
+  },
+  {
+    "name": "Edward IV",
+    "gender": "m",
+    "src": "Edward-IV.jpg",
+    "reignStarted": "1461"
   },
   {
     "name": "John",
@@ -51,52 +142,10 @@
     ]
   },
   {
-    "name": "Edward III",
-    "gender": "m",
-    "src": "Edward-III.jpg",
-    "reignStarted": "1327"
-  },
-  {
-    "name": "Richard I",
-    "gender": "m",
-    "src": "Richard-I.jpg",
-    "reignStarted": "1189"
-  },
-  {
-    "name": "Elizabeth I",
-    "gender": "f",
-    "src": "Elizabeth-I.jpg",
-    "reignStarted": "1558"
-  },
-  {
-    "name": "Richard II",
-    "gender": "m",
-    "src": "Richard-II.jpg",
-    "reignStarted": "1377"
-  },
-  {
     "name": "Philip",
     "gender": "m",
     "src": "Philip.jpg",
     "reignStarted": "1554"
-  },
-  {
-    "name": "Henry V",
-    "gender": "m",
-    "src": "Henry-V.jpeg",
-    "reignStarted": "1413"
-  },
-  {
-    "name": "William I",
-    "gender": "m",
-    "src": "William-I.jpg",
-    "reignStarted": "1066"
-  },
-  {
-    "name": "Mary I",
-    "gender": "f",
-    "src": "Mary-I.jpg",
-    "reignStarted": "1553"
   },
   {
     "name": "Stephen",
@@ -105,51 +154,9 @@
     "reignStarted": "1135"
   },
   {
-    "name": "Henry I",
-    "gender": "m",
-    "src": "Henry-I.jpg",
-    "reignStarted": "1100"
-  },
-  {
-    "name": "Henry VI",
-    "gender": "m",
-    "src": "Henry-VI.jpg",
-    "reignStarted": "1461"
-  },
-  {
-    "name": "Edward II",
-    "gender": "m",
-    "src": "Edward-II.jpg",
-    "reignStarted": "1307"
-  },
-  {
-    "name": "Edward I",
-    "gender": "m",
-    "src": "Edward-I.jpg",
-    "reignStarted": "1272"
-  },
-  {
-    "name": "Henry III",
-    "gender": "m",
-    "src": "Henry-III.jpg",
-    "reignStarted": "1216"
-  },
-  {
     "name": "Edward V",
     "gender": "m",
     "src": "Edward-V.jpg",
     "reignStarted": "1483"
-  },
-  {
-    "name": "Edward IV",
-    "gender": "m",
-    "src": "Edward-IV.jpg",
-    "reignStarted": "1461"
-  },
-  {
-    "name": "Henry II",
-    "gender": "m",
-    "src": "Henry-II.jpg",
-    "reignStarted": "1154"
   }
 ]
