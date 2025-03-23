@@ -1,4 +1,6 @@
 import { useState } from "react";
+import GitHubIcon from "@mui/icons-material/GitHub";
+
 import "./styles/MainPage.css";
 
 import { YearsOff, DropDownV1 } from "../components";
@@ -150,6 +152,22 @@ const MainPage = () => {
           />
         </div>
       </div>
+      <a
+        href="https://github.com/MichaelH10991/monarcle"
+        target="_blank"
+        rel="noreferrer"
+        style={{
+          textAlign: "center",
+          color: "white",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "10px",
+        }}
+      >
+        <GitHubIcon />
+        Check out my code!
+      </a>
     </div>
   );
 };

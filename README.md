@@ -1,6 +1,6 @@
-# archdom-ui
+# monarcle.io
 
-Its a game like wordle or flagdle or worldle and its entirely UI based which means it doesnt have a dependency on a database. It works out what monarch to choose from the date and the order of the data which means its cyclic but its simple.
+Its a game like Wordle, but for English kings and queens, particularly medieval ones. Its entirely UI driven which means it doesnt have a dependency on a database or any kind of backend. It works out what monarch to choose from the order of the data. This is cyclic but its simple.
 
 # development
 
