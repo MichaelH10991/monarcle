@@ -4,8 +4,8 @@ Its a game like wordle or flagdle or worldle and its entirely UI based which mea
 
 # development
 
-node: 16.14.2
-npm: 8.5.0
+- node: 16.14.2
+- npm: 8.5.0
 
 # start ui
 
