@@ -13,9 +13,9 @@ const MAX_GUESSES = 5;
 
 const Correct = ({ value, monarch, loading, setLoading, index }) => {
   return (
-    <div className={`previous-guess ${!loading[index] && "correct"}`}>
+    <div className={`previous-guess`}>
       <div style={{ whiteSpace: "nowrap" }}>{value}</div>
-      <div>
+      <div className={!loading[index] && "correct"}>
         <YearsOff
           guess={findMonarch(data, value).reignStarted}
           answer={monarch.reignStarted}
@@ -29,10 +29,10 @@ const Correct = ({ value, monarch, loading, setLoading, index }) => {
 
 const Incorrect = ({ value, monarch, loading, setLoading, hint, index }) => {
   return (
-    <div className={`previous-guess ${!loading[index] && "incorrect"}`}>
+    <div className={`previous-guess`}>
       <div style={{ minWidth: "80px" }}>{value}</div>
       <div style={{}}>{!loading[index] && hint}</div>
-      <div style={{ whiteSpace: "nowrap" }}>
+      <div className={!loading[index] && "incorrect"}>
         <YearsOff
           guess={findMonarch(data, value).reignStarted}
           answer={monarch.reignStarted}
@@ -88,6 +88,11 @@ const MainPage = () => {
       return;
     }
 
+    if (!findMonarch(data, value)) {
+      alert(`Monarch "${value}" not found in list.`);
+      return;
+    }
+
     setLoading((loadingStates) => ({ ...loadingStates, [guessCount]: true }));
     setGuessCount((curCount) => curCount + 1);
 
@@ -119,8 +124,13 @@ const MainPage = () => {
       <div className="content-container">
         <div className="header">
           <div>{config.appName}</div>
+          <img
+            style={{ objectFit: "cover", maxWidth: "3rem" }}
+            src={require("../images/knight.webp")}
+            alt="The Knight."
+          ></img>
         </div>
-        <div className="prompt-container">{config.prompt}</div>
+        {/* <div className="prompt-container">{config.prompt}</div> */}
         <div className="image-container">
           <div className="monarch-image">
             <img
@@ -136,7 +146,14 @@ const MainPage = () => {
           <button
             onClick={() => handleSubmit(searchText)}
             className="guess-button"
-            disabled={guessesLeft === 0}
+            style={
+              guessesLeft === 0 || isCorrect
+                ? {
+                    /* todo */
+                  }
+                : {}
+            }
+            disabled={guessesLeft === 0 || isCorrect}
           >
             Guess
           </button>
@@ -168,6 +185,7 @@ const MainPage = () => {
           alignItems: "center",
           gap: "10px",
           marginBottom: "20px",
+          fontSize: "13px",
         }}
       >
         <GitHubIcon />
