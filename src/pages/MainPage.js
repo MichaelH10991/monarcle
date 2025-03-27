@@ -32,13 +32,22 @@ const Incorrect = ({ value, monarch, loading, setLoading, hint, index }) => {
     <div className={`previous-guess`}>
       <div style={{ minWidth: "80px" }}>{value}</div>
       <div style={{}}>{!loading[index] && hint}</div>
-      <div className={!loading[index] && "incorrect"}>
-        <YearsOff
-          guess={findMonarch(data, value).reignStarted}
-          answer={monarch.reignStarted}
-          setLoading={setLoading}
-          index={index}
-        />
+      <div
+        style={{
+          display: "flex",
+          width: "248px",
+          alignItems: "center",
+          justifyContent: "right",
+        }}
+      >
+        <div className={!loading[index] && "incorrect"}>
+          <YearsOff
+            guess={findMonarch(data, value).reignStarted}
+            answer={monarch.reignStarted}
+            setLoading={setLoading}
+            index={index}
+          />
+        </div>
       </div>
     </div>
   );
@@ -123,9 +132,18 @@ const MainPage = () => {
     <div className="main-page-container">
       <div className="content-container">
         <div className="header">
-          <div>{config.appName}</div>
           <img
             style={{ objectFit: "cover", maxWidth: "3rem" }}
+            src={require("../images/knight.webp")}
+            alt="The Knight."
+          ></img>
+          <div>{config.appName}</div>
+          <img
+            style={{
+              objectFit: "cover",
+              maxWidth: "3rem",
+              transform: "rotateY(180deg)",
+            }}
             src={require("../images/knight.webp")}
             alt="The Knight."
           ></img>
@@ -134,6 +152,7 @@ const MainPage = () => {
         <div className="image-container">
           <div className="monarch-image">
             <img
+              style={{ border: "5px solid #a663bd" }}
               alt="Nice try ;)"
               src={monarch.src && require("../images/" + monarch.src)}
             />
@@ -189,7 +208,7 @@ const MainPage = () => {
         }}
       >
         <GitHubIcon />
-        Check out my code!
+        Check out the code!
       </a>
     </div>
   );

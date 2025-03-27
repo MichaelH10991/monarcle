@@ -10,7 +10,9 @@ const getMonarch = (monarchs) => {
 };
 
 const findMonarch = (monarchs, name) => {
-  return monarchs.find((monarch) => monarch.name === name);
+  return monarchs.find(
+    (monarch) => monarch.name.toLowerCase() === name.toLowerCase()
+  );
 };
 
 const randomNumber = (high, low) => Math.random() * (high - low) + low;
