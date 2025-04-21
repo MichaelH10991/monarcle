@@ -4,14 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased] - yyyy-mm-dd
 
-## [2.0.0] - 2025-04-dd
+## [2.0.0] - 2025-04-21
+
+### Added
 
 - Updated various components to make them more generic
 - Made the app generic so it can be used as a template to create similar games
 - Various updates, fixes and style changes
-
-### Added
-
 - meta infomation
 
 ### Changed
