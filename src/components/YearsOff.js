@@ -19,17 +19,17 @@ async function load(yearsOff, setNumber, setLoading, index) {
   setLoading((loadingStates) => ({ ...loadingStates, [index]: false }));
 }
 
-const YearsOff = ({ guess, answer, setLoading, index }) => {
+const YearsOff = ({ indicatorValue, setLoading, index }) => {
   const [number, setNumber] = useState();
 
-  const yearsOff = Math.abs(guess - answer);
+  // const yearsOff = Math.abs(guess - answer);
 
   useEffect(() => {
     async function doThing() {
-      await load(yearsOff, setNumber, setLoading, index);
+      await load(indicatorValue, setNumber, setLoading, index);
     }
     doThing();
-  }, [yearsOff]);
+  }, [indicatorValue]);
 
   return `+/-${number} yrs`;
 };

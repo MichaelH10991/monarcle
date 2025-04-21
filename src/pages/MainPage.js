@@ -6,10 +6,10 @@ import "./styles/MainPage.css";
 import { YearsOff, DropDownV1 } from "../components";
 import { getMonarch, findMonarch, getHint } from "../helpers";
 
-import config from "../config.json";
+import config from "../config.js";
 const data = config.data;
 
-const MAX_GUESSES = 5;
+const MAX_GUESSES = config.maxGuesses || 5;
 
 const Correct = ({ value, monarch, loading, setLoading, index }) => {
   return (
@@ -70,7 +70,10 @@ const Foo = ({ options }) => {
   };
 
   return (
-    <div className={`previous-guess`}>
+    <div
+      className={`previous-guess`}
+      style={{ background: config.theme.secondary }}
+    >
       <div style={{ fontSize: "10px", minWidth: "49px" }}>{options.value}</div>
       <HintComponent />
       <div
@@ -83,10 +86,12 @@ const Foo = ({ options }) => {
           fontWeight: "bold",
         }}
       >
-        <div className={!options.loading[options.index] && className}>
+        <div className={!options.loading[options.index] ? className : ""}>
           <YearsOff
-            guess={findMonarch(data, options.value).reignStarted}
-            answer={options.monarch.reignStarted}
+            indicatorValue={config.indicatorValue(
+              findMonarch(data, options.value),
+              options.monarch
+            )}
             setLoading={options.setLoading}
             index={options.index}
           />
@@ -136,6 +141,31 @@ const PreviousGuesses = ({ guesses, monarch, setLoading, loading }) => {
   });
 };
 
+const Banner = () => {
+  const Icon = ({ flip }) => {
+    try {
+      const icon = require(`../images/icon.webp`);
+      return (
+        <img
+          className={flip ? "knight-flip" : "knight"}
+          src={icon}
+          alt={config.iconAlt || "icon"}
+        />
+      );
+    } catch (e) {
+      return undefined;
+    }
+  };
+
+  return (
+    <div className="header">
+      <Icon />
+      <div>{config.appName}</div>
+      <Icon flip />
+    </div>
+  );
+};
+
 const MainPage = () => {
   const [searchText, setSearchText] = useState("");
   const [guesses, setGuesses] = useState([]);
@@ -146,7 +176,7 @@ const MainPage = () => {
 
   const names = data.map((monarch) => monarch.name);
 
-  const monarch = getMonarch(data);
+  const correctAnswer = getMonarch(data);
 
   const handleSubmit = (value) => {
     // can refactor this, create a response obj which contains all the data
@@ -171,14 +201,22 @@ const MainPage = () => {
     //   return;
     // }
 
-    const correct = value.toLowerCase() === monarch.name.toLocaleLowerCase();
+    let correct;
+    if (config.logic) {
+      correct = config.logic(
+        value.toLowerCase(),
+        correctAnswer.name.toLowerCase()
+      );
+    } else {
+      correct = value.toLowerCase() === correctAnswer.name.toLocaleLowerCase();
+    }
 
     setGuesses((guesses) => [
       ...guesses,
       {
         value,
         correct,
-        hint: getHint(monarch, guessCount),
+        hint: getHint(correctAnswer, guessCount),
       },
     ]);
     setIsCorrect(correct);
@@ -189,57 +227,56 @@ const MainPage = () => {
   return (
     <div className="main-page-container">
       <div className="content-container">
-        <div className="header">
-          <img
-            className="knight"
-            src={require("../images/knight.webp")}
-            alt="The Knight."
-          ></img>
-          <div>{config.appName}</div>
-          <img
-            className="knight-flip"
-            style={{ transform: "rotateY(180deg)" }}
-            src={require("../images/knight.webp")}
-            alt="The Knight."
-          ></img>
-        </div>
-        {/* <div className="prompt-container">{config.prompt}</div> */}
+        <Banner />
+        {config.prompt && (
+          <div className="prompt-container">{config.prompt}</div>
+        )}
+
         <div className="image-container">
           <div className="monarch-image">
             <img
               alt="Nice try ;)"
-              src={monarch.src && require("../images/" + monarch.src)}
+              src={
+                correctAnswer.src && require("../images/" + correctAnswer.src)
+              }
             />
           </div>
         </div>
         <div className="guess-container">
           <div className="guess-textbox-container">
-            <DropDownV1 data={names} setSearchText={setSearchText} />
+            <DropDownV1
+              data={names}
+              setSearchText={setSearchText}
+              placeholder={config.placeholderText}
+            />
           </div>
           <button
             onClick={() => handleSubmit(searchText)}
             className="guess-button"
-            style={
-              guessesLeft === 0 || isCorrect
-                ? {
-                    /* todo */
-                  }
-                : {}
-            }
+            style={{
+              background: config.theme.secondary,
+              borderColor: config.theme.borderColor,
+            }}
             disabled={guessesLeft === 0 || isCorrect}
           >
             Guess
           </button>
         </div>
         <div className="guesses-container">
-          <div className="guesses-left">
+          <div
+            className="guesses-left"
+            style={{
+              background: config.theme.secondary,
+              borderColor: config.theme.borderColor,
+            }}
+          >
             {guessCount === MAX_GUESSES || isCorrect
-              ? `It's ${monarch.name}.`
+              ? `It's ${correctAnswer.name}.`
               : `GUESS ${MAX_GUESSES - guessesLeft + 1} of ${MAX_GUESSES}`}
           </div>
           <PreviousGuesses
             guesses={guesses}
-            monarch={monarch}
+            monarch={correctAnswer}
             setLoading={setLoading}
             loading={loading}
             isCorrect={isCorrect}
@@ -257,7 +294,7 @@ const MainPage = () => {
           justifyContent: "center",
           alignItems: "center",
           gap: "10px",
-          marginBottom: "20px",
+          paddingBottom: "20px",
           fontSize: "13px",
         }}
       >

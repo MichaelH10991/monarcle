@@ -19,7 +19,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:app": "./scripts/start.sh",
     "start:monarcle": "./scripts/start.sh monarcle",
+    "start:test": "./scripts/start.sh test",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

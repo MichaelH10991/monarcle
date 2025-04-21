@@ -11,6 +11,10 @@ Its a game like Wordle, but for English kings and queens, particularly medieval 
 
 `npm start`
 
+# start a specfic flavour
+
+`npm start:app "monarcle"`
+
 # build ui
 
 `npm run build`

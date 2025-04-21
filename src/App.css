@@ -3,5 +3,6 @@
   /* background: #0f172a; */
   background: #181617;
   color: white;
-  height: 100vh;
+  min-height: 100vh;
+  overflow: auto;
 }
