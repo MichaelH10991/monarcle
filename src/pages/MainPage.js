@@ -6,8 +6,8 @@ import "./styles/MainPage.css";
 import { YearsOff, DropDownV1 } from "../components";
 import { getMonarch, findMonarch, getHint } from "../helpers";
 
-import data from "../data.json";
 import config from "../config.json";
+const data = config.data;
 
 const MAX_GUESSES = 5;
 
@@ -30,14 +30,16 @@ const Correct = ({ value, monarch, loading, setLoading, index }) => {
 const Incorrect = ({ value, monarch, loading, setLoading, hint, index }) => {
   return (
     <div className={`previous-guess`}>
-      <div style={{ minWidth: "80px" }}>{value}</div>
-      <div style={{}}>{!loading[index] && hint}</div>
+      <div style={{ fontSize: "10px", minWidth: "49px" }}>{value}</div>
+      <div style={{ fontSize: "10px" }}>{!loading[index] && hint}</div>
       <div
         style={{
           display: "flex",
           width: "248px",
           alignItems: "center",
           justifyContent: "right",
+          fontSize: "8px",
+          fontWeight: "bold",
         }}
       >
         <div className={!loading[index] && "incorrect"}>
@@ -53,30 +55,84 @@ const Incorrect = ({ value, monarch, loading, setLoading, hint, index }) => {
   );
 };
 
+const Foo = ({ options }) => {
+  const className = options.correct ? "correct" : "incorrect";
+
+  const HintComponent = () => {
+    if (options.correct || !options.hint) {
+      return undefined;
+    }
+    return (
+      <div style={{ fontSize: "10px" }}>
+        {!options.loading[options.index] && options.hint}
+      </div>
+    );
+  };
+
+  return (
+    <div className={`previous-guess`}>
+      <div style={{ fontSize: "10px", minWidth: "49px" }}>{options.value}</div>
+      <HintComponent />
+      <div
+        style={{
+          display: "flex",
+          width: "248px",
+          alignItems: "center",
+          justifyContent: "right",
+          fontSize: "8px",
+          fontWeight: "bold",
+        }}
+      >
+        <div className={!options.loading[options.index] && className}>
+          <YearsOff
+            guess={findMonarch(data, options.value).reignStarted}
+            answer={options.monarch.reignStarted}
+            setLoading={options.setLoading}
+            index={options.index}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const PreviousGuesses = ({ guesses, monarch, setLoading, loading }) => {
   return guesses.map((guess, index) => {
     return (
-      <div>
-        {guess.correct ? (
-          <Correct
-            value={guess.value}
-            monarch={monarch}
-            loading={loading}
-            setLoading={setLoading}
-            index={index}
-          />
-        ) : (
-          <Incorrect
-            value={guess.value}
-            monarch={monarch}
-            loading={loading}
-            setLoading={setLoading}
-            hint={guess.hint}
-            index={index}
-          />
-        )}
-      </div>
+      <Foo
+        options={{
+          value: guess.value,
+          monarch: monarch,
+          loading: loading,
+          setLoading: setLoading,
+          index: index,
+          hint: guess.hint,
+          correct: guess.correct,
+        }}
+      />
     );
+    // return (
+    //   <div>
+    //     {guess.correct ? (
+    //       <Correct
+    //         value={guess.value}
+    //         monarch={monarch}
+    //         loading={loading}
+    //         setLoading={setLoading}
+    //         index={index}
+    //       />
+    //     ) : (
+    //       <Incorrect
+    //         value={guess.value}
+    //         monarch={monarch}
+    //         loading={loading}
+    //         setLoading={setLoading}
+    //         hint={guess.hint}
+    //         index={index}
+    //       />
+    //     )}
+    //   </div>
+    // );
   });
 };
 
@@ -93,6 +149,8 @@ const MainPage = () => {
   const monarch = getMonarch(data);
 
   const handleSubmit = (value) => {
+    // can refactor this, create a response obj which contains all the data
+    // required to handle an answer response
     if (!value) {
       return;
     }
@@ -133,17 +191,14 @@ const MainPage = () => {
       <div className="content-container">
         <div className="header">
           <img
-            style={{ objectFit: "cover", maxWidth: "3rem" }}
+            className="knight"
             src={require("../images/knight.webp")}
             alt="The Knight."
           ></img>
           <div>{config.appName}</div>
           <img
-            style={{
-              objectFit: "cover",
-              maxWidth: "3rem",
-              transform: "rotateY(180deg)",
-            }}
+            className="knight-flip"
+            style={{ transform: "rotateY(180deg)" }}
             src={require("../images/knight.webp")}
             alt="The Knight."
           ></img>
@@ -152,7 +207,6 @@ const MainPage = () => {
         <div className="image-container">
           <div className="monarch-image">
             <img
-              style={{ border: "5px solid #a663bd" }}
               alt="Nice try ;)"
               src={monarch.src && require("../images/" + monarch.src)}
             />

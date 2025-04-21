@@ -36,7 +36,8 @@ export default function ComboBox({ data, setSearchText }) {
         "& .MuiInputBase-root": {
           color: "white",
           fontFamily: "Arial",
-          backgroundColor: "#424f6e",
+          backgroundColor: "#252525",
+          border: "1px solid #383838",
         },
         "& .MuiFormLabel-root": {
           color: "lightgrey",

@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 
 const YEAR = 2024;
+const SPEED = 100;
+
+const useNumber = () => {
+  const [number, setNumber] = useState();
+  return [number, setNumber];
+};
 
 const wait = (ms) => new Promise((res) => setTimeout(res, ms));
 
 async function load(yearsOff, setNumber, setLoading, index) {
-  for (var i = YEAR; i >= yearsOff; i -= 100) {
+  for (var i = YEAR; i >= yearsOff; i -= SPEED) {
     setNumber(i);
     await wait(50);
   }
@@ -15,7 +21,7 @@ async function load(yearsOff, setNumber, setLoading, index) {
 
 const YearsOff = ({ guess, answer, setLoading, index }) => {
   const [number, setNumber] = useState();
-  // const [loading, setLoading]
+
   const yearsOff = Math.abs(guess - answer);
 
   useEffect(() => {
