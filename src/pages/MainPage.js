@@ -11,51 +11,7 @@ const data = config.data;
 
 const MAX_GUESSES = config.maxGuesses || 5;
 
-const Correct = ({ value, monarch, loading, setLoading, index }) => {
-  return (
-    <div className={`previous-guess`}>
-      <div style={{ whiteSpace: "nowrap" }}>{value}</div>
-      <div className={!loading[index] && "correct"}>
-        <YearsOff
-          guess={findMonarch(data, value).reignStarted}
-          answer={monarch.reignStarted}
-          setLoading={setLoading}
-          index={index}
-        />
-      </div>
-    </div>
-  );
-};
-
-const Incorrect = ({ value, monarch, loading, setLoading, hint, index }) => {
-  return (
-    <div className={`previous-guess`}>
-      <div style={{ fontSize: "10px", minWidth: "49px" }}>{value}</div>
-      <div style={{ fontSize: "10px" }}>{!loading[index] && hint}</div>
-      <div
-        style={{
-          display: "flex",
-          width: "248px",
-          alignItems: "center",
-          justifyContent: "right",
-          fontSize: "8px",
-          fontWeight: "bold",
-        }}
-      >
-        <div className={!loading[index] && "incorrect"}>
-          <YearsOff
-            guess={findMonarch(data, value).reignStarted}
-            answer={monarch.reignStarted}
-            setLoading={setLoading}
-            index={index}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const Foo = ({ options }) => {
+const FeedbackComponent = ({ options }) => {
   const className = options.correct ? "correct" : "incorrect";
 
   const HintComponent = () => {
@@ -74,7 +30,7 @@ const Foo = ({ options }) => {
       className={`previous-guess`}
       style={{ background: config.theme.secondary }}
     >
-      <div style={{ fontSize: "10px", minWidth: "49px" }}>{options.value}</div>
+      <div style={{ fontSize: "10px", minWidth: "52px" }}>{options.value}</div>
       <HintComponent />
       <div
         style={{
@@ -104,7 +60,7 @@ const Foo = ({ options }) => {
 const PreviousGuesses = ({ guesses, monarch, setLoading, loading }) => {
   return guesses.map((guess, index) => {
     return (
-      <Foo
+      <FeedbackComponent
         options={{
           value: guess.value,
           monarch: monarch,
@@ -116,28 +72,6 @@ const PreviousGuesses = ({ guesses, monarch, setLoading, loading }) => {
         }}
       />
     );
-    // return (
-    //   <div>
-    //     {guess.correct ? (
-    //       <Correct
-    //         value={guess.value}
-    //         monarch={monarch}
-    //         loading={loading}
-    //         setLoading={setLoading}
-    //         index={index}
-    //       />
-    //     ) : (
-    //       <Incorrect
-    //         value={guess.value}
-    //         monarch={monarch}
-    //         loading={loading}
-    //         setLoading={setLoading}
-    //         hint={guess.hint}
-    //         index={index}
-    //       />
-    //     )}
-    //   </div>
-    // );
   });
 };
 
@@ -283,24 +217,30 @@ const MainPage = () => {
           />
         </div>
       </div>
-      <a
-        href="https://github.com/MichaelH10991/monarcle"
-        target="_blank"
-        rel="noreferrer"
+      <div
         style={{
-          textAlign: "center",
-          color: "white",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "10px",
           paddingBottom: "20px",
           fontSize: "13px",
+          textAlign: "center",
         }}
       >
-        <GitHubIcon />
-        Check out the code!
-      </a>
+        <a
+          href="https://github.com/MichaelH10991/monarcle"
+          target="_blank"
+          rel="noreferrer"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "10px",
+            color: "white",
+          }}
+        >
+          <GitHubIcon />
+          Check out the code!
+        </a>
+        <div style={{ fontSize: "10px" }}>v{process.env.REACT_APP_VERSION}</div>
+      </div>
     </div>
   );
 };
