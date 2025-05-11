@@ -4,9 +4,7 @@ module.exports = {
   appName: "monarcle",
   iconAlt: "Icon of a knight charging into battle",
   placeholderText: "Monarch",
-  indicatorValue: (guess, ans) => {
-    return Math.abs(guess.reignStarted - ans.reignStarted);
-  },
+  variant: "number",
   theme: {
     background: "#181617",
     secondary: "#252525",

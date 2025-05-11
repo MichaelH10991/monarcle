@@ -12,46 +12,54 @@ const data = config.data;
 const MAX_GUESSES = config.maxGuesses || 5;
 
 const FeedbackComponent = ({ options }) => {
-  const className = options.correct ? "correct" : "incorrect";
+  const className = options.guessObject.correct ? "correct" : "incorrect";
 
   const HintComponent = () => {
-    if (options.correct || !options.hint) {
+    if (options.guessObject.correct || !options.guessObject.hint) {
       return undefined;
     }
     return (
       <div style={{ fontSize: "10px" }}>
-        {!options.loading[options.index] && options.hint}
+        {!options.loading[options.index] && options.guessObject.hint}
       </div>
     );
   };
 
-  return (
-    <div
-      className={`previous-guess`}
-      style={{ background: config.theme.secondary }}
-    >
-      <div style={{ fontSize: "10px", minWidth: "52px" }}>{options.value}</div>
-      <HintComponent />
-      <div
-        style={{
-          display: "flex",
-          width: "248px",
-          alignItems: "center",
-          justifyContent: "right",
-          fontSize: "8px",
-          fontWeight: "bold",
-        }}
-      >
+  const Foo = () => {
+    if (options.variant === "number") {
+      return (
         <div className={!options.loading[options.index] ? className : ""}>
           <YearsOff
-            indicatorValue={config.indicatorValue(
-              findMonarch(data, options.value),
-              options.monarch
-            )}
+            from={options.guessObject.guessedMonarch.reignStarted}
+            to={options.monarch.reignStarted}
             setLoading={options.setLoading}
             index={options.index}
           />
         </div>
+      );
+    }
+  };
+
+  return (
+    <div
+      className={"previous-guess"}
+      style={{ background: config.theme.secondary }}
+    >
+      <div className={"first-hint"}>{options.guessObject.value}</div>
+      <HintComponent />
+      <div className={"second-hint"}>
+        {(options.variant === "number" && (
+          <div className={!options.loading[options.index] ? className : ""}>
+            <YearsOff
+              from={options.guessObject.guessedMonarch.reignStarted}
+              to={options.monarch.reignStarted}
+              setLoading={options.setLoading}
+              index={options.index}
+            />
+          </div>
+        )) ||
+          (options.variant === "text" && <div>correct</div>)}
+        {/* <Foo /> */}
       </div>
     </div>
   );
@@ -62,13 +70,12 @@ const PreviousGuesses = ({ guesses, monarch, setLoading, loading }) => {
     return (
       <FeedbackComponent
         options={{
-          value: guess.value,
+          guessObject: guess,
           monarch: monarch,
           loading: loading,
           setLoading: setLoading,
           index: index,
-          hint: guess.hint,
-          correct: guess.correct,
+          variant: "number",
         }}
       />
     );
@@ -127,14 +134,6 @@ const MainPage = () => {
     setLoading((loadingStates) => ({ ...loadingStates, [guessCount]: true }));
     setGuessCount((curCount) => curCount + 1);
 
-    // if (!value) {
-    //   setLoading((loadingStates) => ({
-    //     ...loadingStates,
-    //     [guessCount]: false,
-    //   }));
-    //   return;
-    // }
-
     let correct;
     if (config.logic) {
       correct = config.logic(
@@ -151,6 +150,7 @@ const MainPage = () => {
         value,
         correct,
         hint: getHint(correctAnswer, guessCount),
+        guessedMonarch: findMonarch(data, value),
       },
     ]);
     setIsCorrect(correct);

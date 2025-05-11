@@ -183,6 +183,20 @@
   background: #e53414;
 }
 
+.first-hint {
+  font-size: 10px;
+  min-width: 52px;
+}
+
+.second-hint {
+  display: flex;
+  width: 248px;
+  align-items: center;
+  justify-content: right;
+  font-size: 8px;
+  font-weight: bold;
+}
+
 .hint-button {
   position: absolute;
   left: 76%;

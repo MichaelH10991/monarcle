@@ -4,11 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased] - yyyy-mm-dd
 
-## [2.0.1] - 2024-05-11
+## [2.1.0] - 2024-05-11
 
 ### Added
 
 - Version infomation
+- Variants for hint component
 
 ### Changed
 
