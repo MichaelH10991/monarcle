@@ -31,7 +31,6 @@ Its a game like Wordle, but for English kings and queens, particularly medieval 
 
 - Checkout `develop`
 - Make the change.
-- Commit the change.
 - Run `npm run csadd` to create the changeset.
-- Commit the changesets.
+- Commit the changes.
 - Push the changes to `develop`.
