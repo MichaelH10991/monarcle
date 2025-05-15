@@ -4,8 +4,8 @@ Its a game like Wordle, but for English kings and queens, particularly medieval 
 
 # development
 
-- node: 16.14.2
-- npm: 8.5.0
+- node: 18.20.8
+- npm: 16.14.2
 
 # start ui
 

@@ -31,7 +31,7 @@ const YearsOff = ({ from, to, setLoading, index }) => {
     doThing();
   }, [index, yearsOff, setLoading]);
 
-  return `+/-${number} yrs`;
+  return `${number} yrs`;
 };
 
 export default YearsOff;

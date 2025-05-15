@@ -1,5 +1,6 @@
 #!/bin/bash
 
+game_name=$1
 timestamp=$(date)
 version=$(cat package.json | jq -r .version)
 BUCKET="s3://archdom/"

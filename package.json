@@ -2,6 +2,9 @@
   "name": "monarcle-ui",
   "version": "2.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.20.8"
+  },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
@@ -26,7 +29,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "shuffle": "node utils/shuffle.js",
-    "deploy": "./scripts/deploy.sh"
+    "deploy:monarcle": "./scripts/deploy.sh monarcle",
+    "csadd": "npx @changesets/cli",
+    "csversion": "npx @changesets/cli version"
   },
   "eslintConfig": {
     "extends": [
