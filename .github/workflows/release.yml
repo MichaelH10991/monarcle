@@ -30,3 +30,4 @@ jobs:
 
       - name: Tag
         run: git tag $(node -p "require('./package.json').version")
+        run: git push --tags
