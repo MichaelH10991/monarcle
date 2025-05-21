@@ -1,5 +1,12 @@
 All notable changes to this project will be documented in this file.
 
+## 2.1.1
+
+### Patch Changes
+
+- 98c1192: add github release action
+- 729b5e2: Removed unused config option from art game
+
 ## [Unreleased] - yyyy-mm-dd
 
 ## [2.1.0] - 2024-05-11
