@@ -27,3 +27,6 @@ jobs:
         uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Tag
+        run: git tag $(node -p "require('./package.json').version")
