@@ -29,5 +29,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Tag
-        run: git tag $(node -p "require('./package.json').version")
-        run: git push --tags
+        steps:
+          - run: git tag $(node -p "require('./package.json').version")
+          - run: git push --tags
