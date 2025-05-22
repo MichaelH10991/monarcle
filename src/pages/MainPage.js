@@ -101,7 +101,12 @@ const Banner = () => {
   return (
     <div className="header">
       <Icon />
-      <div>{config.appName}</div>
+      <div
+        className="header-text"
+        style={{ fontFamily: config.theme.fontFamily }}
+      >
+        {config.appName}
+      </div>
       <Icon flip />
     </div>
   );
