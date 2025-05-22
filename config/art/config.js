@@ -7,9 +7,6 @@ module.exports = {
   logic: (guess, ans) => {
     return guess === ans;
   },
-  indicatorValue: (guess, ans) => {
-    return guess.name === ans.name;
-  },
   theme: {
     background: "#0c3d02",
     secondary: "#5b6e49",
