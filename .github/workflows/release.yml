@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - "develop"
-      - "github-actions"
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -30,4 +29,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Tag
-        run: git tag v$(node -p "require('./package.json').version") && git push --tags --force
+        run: git tag v$(node -p "require('./package.json').version") --force && git push --tags --force
