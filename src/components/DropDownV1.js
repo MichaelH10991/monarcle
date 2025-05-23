@@ -3,7 +3,6 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import "./DropDownV1.css";
 import config from "../config";
-import { borderColor } from "@mui/system";
 
 const sortNames = (names) => {
   return names.sort();
@@ -33,7 +32,9 @@ export default function ComboBox({ data, setSearchText, placeholder }) {
           color: "white",
           fontFamily: "Arial",
           backgroundColor: config.theme.secondary,
-          border: `1px solid ${config.theme.borderColor}`,
+          border: config.theme.borderColor
+            ? `1px solid ${config.theme.borderColor}`
+            : "none",
         },
         "& .MuiFormLabel-root": {
           color: "lightgrey",

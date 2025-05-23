@@ -1,15 +1,15 @@
 const { borderColor } = require("@mui/system");
 
 module.exports = {
-  appName: "monarcle",
+  appName: "Monarcle",
   iconAlt: "Icon of a knight charging into battle",
   placeholderText: "Monarch",
   variant: "number",
   theme: {
     background: "#181617",
     secondary: "#252525",
-    borderColor: "#383838",
     text: "white",
+    fontFamily: "UnifrakturMaguntia",
   },
   data: [
     {
