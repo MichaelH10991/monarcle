@@ -1,6 +1,7 @@
 #!/bin/bash
 
 game_name=$1
+local=$2
 timestamp=$(date)
 version=$(cat package.json | jq -r .version)
 BUCKET="s3://archdom/"
@@ -25,4 +26,4 @@ npm install
 npm run build
 
 # deploy
-aws s3 cp build/ $BUCKET --recursive
+aws --profile mike s3 cp build/ $BUCKET --recursive
