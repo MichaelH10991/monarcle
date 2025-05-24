@@ -1,4 +1,4 @@
-name: Release PR
+name: Release
 
 on:
   push:
@@ -9,7 +9,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release-pr:
-    name: Release PR
+    name: Create release PR
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -31,5 +31,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
-      - name: Tag
-        run: git tag v$(node -p "require('./package.json').version") --force && git push --tags --force
+      # - name: Tag
+      #   run: git tag v$(node -p "require('./package.json').version") --force && git push --tags --force

@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - test-cicd # Only when merging into master
+      - master # Only when merging into master
 
 jobs:
   release:
