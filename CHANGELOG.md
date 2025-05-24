@@ -1,5 +1,12 @@
 All notable changes to this project will be documented in this file.
 
+## 2.1.2
+
+### Patch Changes
+
+- 8249688: updated header font
+- 8249688: updated styles
+
 ## 2.1.1
 
 ### Patch Changes
