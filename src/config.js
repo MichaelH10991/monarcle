@@ -1,5 +1,3 @@
-const { borderColor } = require("@mui/system");
-
 module.exports = {
   appName: "Monarcle",
   iconAlt: "Icon of a knight charging into battle",
@@ -7,7 +5,7 @@ module.exports = {
   variant: "number",
   theme: {
     background: "#181617",
-    secondary: "#4c4c4c",
+    secondary: "#3e3e3e",
     text: "white",
     fontFamily: "UnifrakturMaguntia",
   },
