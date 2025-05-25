@@ -35,6 +35,7 @@ export default function ComboBox({ data, setSearchText, placeholder }) {
           border: config.theme.borderColor
             ? `1px solid ${config.theme.borderColor}`
             : "none",
+          borderRadius: "10px",
         },
         "& .MuiFormLabel-root": {
           color: "lightgrey",
