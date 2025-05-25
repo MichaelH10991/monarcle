@@ -13,12 +13,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # - name: Tag
-      #   run: git tag v$(node -p "require('./package.json').version")-test --force && git push --tags --force
-
       - name: Build and deploy to s3
         run: npm run deploy:monarcle
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: "eu-west-2"
+
+  post-deploy:
+    name: Post deploy
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+
+      - name: Merge master
+        run: git merge master
+
+      - name: Push
+        run: git push

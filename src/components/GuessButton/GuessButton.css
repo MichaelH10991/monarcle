@@ -1,0 +1,19 @@
+button {
+  border-radius: 10px;
+  border: none;
+  color: #d9d9d9;
+  font-weight: 900;
+  font-size: 17px;
+  width: 84px;
+}
+
+button:hover {
+  background: #00aacc;
+  color: #ffffff;
+}
+
+button:disabled,
+button[disabled] {
+  background-color: #cccccc;
+  color: #666666;
+}

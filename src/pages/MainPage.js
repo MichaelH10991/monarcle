@@ -3,8 +3,10 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 import "./styles/MainPage.css";
 
-import { YearsOff, DropDownV1 } from "../components";
-import { getMonarch, findMonarch, getHint } from "../helpers";
+import { YearsOff, DropDownV1, GuessButton } from "../components";
+import { getMonarch, findMonarch, getHint, getRandomMonarch } from "../helpers";
+
+import { useThing, useSearchText } from "../hooks/useThing.js";
 
 import config from "../config.js";
 const data = config.data;
@@ -82,12 +84,13 @@ const PreviousGuesses = ({ guesses, monarch, setLoading, loading }) => {
   });
 };
 
-const Banner = () => {
+const Banner = ({ handleClick }) => {
   const Icon = ({ flip }) => {
     try {
       const icon = require(`../images/icon.webp`);
       return (
         <img
+          onClick={() => handleClick()}
           className={flip ? "knight-flip" : "knight"}
           src={icon}
           alt={config.iconAlt || "icon"}
@@ -112,17 +115,33 @@ const Banner = () => {
   );
 };
 
+const useDisabled = (guessesLeft, isCorrect) => {
+  return guessesLeft === 0 || isCorrect;
+};
+
 const MainPage = () => {
   const [searchText, setSearchText] = useState("");
+  const [correctAnswer, setCorrectAnswer] = useState(getMonarch(data));
   const [guesses, setGuesses] = useState([]);
   const [guessCount, setGuessCount] = useState(0);
   const [guessesLeft, setGuessesLeft] = useState(MAX_GUESSES);
   const [isCorrect, setIsCorrect] = useState(false);
   const [loading, setLoading] = useState({});
 
+  const [clickedCount, setClickedCount] = useState(0);
+
+  const [stats, setStats] = useState({}); // use to combine guessCount, guessesLeft etc
+
+  const disabled = useDisabled(guessesLeft, isCorrect);
+
+  // const [guessesLeft, setGuessesLeft, isCorrect, setIsCorrect] =
+  //   useThing(config);
+
+  // const [searchText, setSearchText] = useSearchText("");
+
   const names = data.map((monarch) => monarch.name);
 
-  const correctAnswer = getMonarch(data);
+  // const correctAnswer = getMonarch(data);
 
   const handleSubmit = (value) => {
     // can refactor this, create a response obj which contains all the data
@@ -139,15 +158,8 @@ const MainPage = () => {
     setLoading((loadingStates) => ({ ...loadingStates, [guessCount]: true }));
     setGuessCount((curCount) => curCount + 1);
 
-    let correct;
-    if (config.logic) {
-      correct = config.logic(
-        value.toLowerCase(),
-        correctAnswer.name.toLowerCase()
-      );
-    } else {
-      correct = value.toLowerCase() === correctAnswer.name.toLocaleLowerCase();
-    }
+    const correct =
+      value.toLowerCase() === correctAnswer.name.toLocaleLowerCase();
 
     setGuesses((guesses) => [
       ...guesses,
@@ -163,10 +175,32 @@ const MainPage = () => {
     setSearchText("");
   };
 
+  const handleNewGame = (canStartNewGame) => {
+    if (canStartNewGame) {
+      console.log(getRandomMonarch(data));
+      setCorrectAnswer(getRandomMonarch(data));
+    }
+  };
+
+  const handleSpecial = (clickedCount, setClickedCount, disabled) => {
+    // const canStartNewGame = clickedCount >= 5 && disabled;
+    const canStartNewGame = true;
+    if (canStartNewGame) {
+      setClickedCount(0);
+      handleNewGame(canStartNewGame);
+    } else {
+      setClickedCount((count) => (count += 1));
+    }
+  };
+
   return (
     <div className="main-page-container">
       <div className="content-container">
-        <Banner />
+        <Banner
+          handleClick={() =>
+            handleSpecial(clickedCount, setClickedCount, disabled)
+          }
+        />
         {config.prompt && (
           <div className="prompt-container">{config.prompt}</div>
         )}
@@ -189,17 +223,15 @@ const MainPage = () => {
               placeholder={config.placeholderText}
             />
           </div>
-          <button
-            onClick={() => handleSubmit(searchText)}
-            className="guess-button"
+          <GuessButton
             style={{
               background: config.theme.secondary,
               borderColor: config.theme.borderColor,
             }}
-            disabled={guessesLeft === 0 || isCorrect}
-          >
-            Guess
-          </button>
+            handleSubmit={() => handleSubmit(searchText)}
+            disabled={disabled}
+            text="Guess"
+          />
         </div>
         <div className="guesses-container">
           <div
