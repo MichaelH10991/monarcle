@@ -1,5 +1,15 @@
 All notable changes to this project will be documented in this file.
 
+## 2.2.0
+
+### Minor Changes
+
+- 029f52d: pulled out guess button into its own component
+
+### Patch Changes
+
+- 1b1d03b: styling changes
+
 ## 2.1.2
 
 ### Patch Changes
