@@ -25,4 +25,21 @@ const findMonarch = (monarchs, name) => {
 const getHint = (monarch, guessCount) =>
   monarch.hints && monarch.hints[guessCount];
 
-export { getMonarch, findMonarch, randomNumber, getHint, getRandomMonarch };
+/**
+ * Returns the loading state for the last guess.
+ * @param {Array} guesses - Array of guesses
+ * @param {Object} loadingStates - Object of loading states keyed by id: {0: false, 1: true}
+ * @returns {Boolean} - Whether guess is loading
+ */
+const getIsLoading = (guesses, loadingStates) => {
+  return loadingStates[guesses.length - 1];
+};
+
+export {
+  getMonarch,
+  findMonarch,
+  randomNumber,
+  getHint,
+  getRandomMonarch,
+  getIsLoading,
+};

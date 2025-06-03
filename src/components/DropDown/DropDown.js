@@ -1,8 +1,7 @@
 import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import "./DropDownV1.css";
-import config from "../config";
+import "./DropDown.css";
 
 const sortNames = (names) => {
   return names.sort();
@@ -12,7 +11,7 @@ const onlyUnique = (value, index, array) => {
   return array.indexOf(value) === index;
 };
 
-export default function ComboBox({ data, setSearchText, placeholder }) {
+export default function ComboBox({ data, setSearchText, placeholder, theme }) {
   const [inputValue, setInputValue] = React.useState();
 
   const sorted = sortNames(data);
@@ -31,10 +30,8 @@ export default function ComboBox({ data, setSearchText, placeholder }) {
         "& .MuiInputBase-root": {
           color: "white",
           fontFamily: "Arial",
-          backgroundColor: config.theme.secondary,
-          border: config.theme.borderColor
-            ? `1px solid ${config.theme.borderColor}`
-            : "none",
+          backgroundColor: theme.secondary,
+          border: theme.borderColor ? `1px solid ${theme.borderColor}` : "none",
           borderRadius: "10px",
         },
         "& .MuiFormLabel-root": {
@@ -48,6 +45,5 @@ export default function ComboBox({ data, setSearchText, placeholder }) {
         <TextField {...params} label={placeholder || ""} />
       )}
     />
-    // </ThemeProvider>
   );
 }

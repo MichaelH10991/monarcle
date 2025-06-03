@@ -1,6 +1,8 @@
-import DropDown from "./DropDown";
 import YearsOff from "./YearsOff";
-import DropDownV1 from "./DropDownV1";
+import DropDown from "./DropDown/DropDown";
 import GuessButton from "./GuessButton/GuessButton";
+import Guesses from "./Guesses/Guesses";
+import Hint from "./Hint/Hint";
+import * as common from "./common";
 
-export { DropDown, YearsOff, DropDownV1, GuessButton };
+export { YearsOff, DropDown, GuessButton, Guesses, Hint, common };

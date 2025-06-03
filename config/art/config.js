@@ -3,10 +3,8 @@ module.exports = {
   prompt: "Who created this?",
   iconAlt: "The icon",
   placeholderText: "Artist",
+  variant: "bool",
   maxGuesses: 5,
-  logic: (guess, ans) => {
-    return guess === ans;
-  },
   theme: {
     background: "#0c3d02",
     secondary: "#5b6e49",
