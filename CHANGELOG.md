@@ -1,5 +1,13 @@
 All notable changes to this project will be documented in this file.
 
+## 2.3.0
+
+### Minor Changes
+
+- 366e9ba: Added hints for the rest of the monarchs
+- 8bf0783: General refactor and tidy up, introduced correctness wrapper
+- 4975349: Updated how hints work, some additional styling
+
 ## 2.2.0
 
 ### Minor Changes
