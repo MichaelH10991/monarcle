@@ -7,8 +7,12 @@ import Guess from "./Guess";
  */
 const Guesses = ({ guesses, monarch, setLoading, loading, theme }) => {
   return (
-    <>
-      {guesses.length > 0 && <div>Guesses</div>}
+    <div>
+      {guesses.length > 0 && (
+        <span style={{ fontStyle: "italic", color: "lightgray" }}>
+          Guesses:
+        </span>
+      )}
       {guesses.map((guess, index) => {
         return (
           <Guess
@@ -24,7 +28,7 @@ const Guesses = ({ guesses, monarch, setLoading, loading, theme }) => {
           />
         );
       })}
-    </>
+    </div>
   );
 };
 
