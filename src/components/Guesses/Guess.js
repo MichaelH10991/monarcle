@@ -3,13 +3,6 @@ import YearsOff from "../YearsOff";
 import { CorrectnessWrapper, Badge } from "../common";
 import React from "react";
 
-const HintComponent = ({ isCorrect, isLoading, hint }) => {
-  if (isCorrect || !hint) {
-    return undefined;
-  }
-  return <div style={{ fontSize: "10px" }}>{!isLoading && hint}</div>;
-};
-
 const bool = (isCorrect, isLoading) => {
   if (isLoading) {
     return undefined;
@@ -28,6 +21,8 @@ const Guess = ({ options, theme }) => {
   const isCorrect = options.guessObject.correct;
   const isLoading = options.loading[options.index];
   const hint = options.guessObject.hint;
+  const reignStarted = options.guessObject.guessedMonarch.reignStarted;
+  const reignEnded = options.guessObject.guessedMonarch.reignStarted;
 
   let variant;
   switch (options.variant) {
@@ -48,12 +43,13 @@ const Guess = ({ options, theme }) => {
 
   return (
     <div className={"previous-guess"} style={{ background: theme.secondary }}>
-      <div className={"first-hint"}>{options.guessObject.value}</div>
-      <HintComponent isCorrect={isCorrect} isLoading={isLoading} hint={hint} />
+      <div className={"first-hint"}>
+        {options.guessObject.value} - r.{reignStarted} - {reignEnded}
+      </div>
+      {/* <HintComponent isCorrect={isCorrect} isLoading={isLoading} hint={hint} /> */}
       <div className={"second-hint"}>
         <CorrectnessWrapper isCorrect={isCorrect} isLoading={isLoading}>
           <Badge>{variant}</Badge>
-          {/* <Badge>hello</Badge> */}
         </CorrectnessWrapper>
       </div>
     </div>

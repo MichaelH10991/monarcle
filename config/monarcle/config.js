@@ -41,6 +41,7 @@ module.exports = {
       gender: "m",
       src: "William-II.jpg",
       reignStarted: "1087",
+      hints: ["foo", "bar"],
     },
     {
       name: "Richard I",

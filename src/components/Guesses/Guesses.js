@@ -6,21 +6,26 @@ import Guess from "./Guess";
  * @returns {Component} - An Array of Guess components
  */
 const Guesses = ({ guesses, monarch, setLoading, loading, theme }) => {
-  return guesses.map((guess, index) => {
-    return (
-      <Guess
-        options={{
-          guessObject: guess,
-          monarch: monarch,
-          loading: loading,
-          setLoading: setLoading,
-          index: index,
-          variant: "number",
-        }}
-        theme={theme}
-      />
-    );
-  });
+  return (
+    <>
+      {guesses.length > 0 && <div>Guesses</div>}
+      {guesses.map((guess, index) => {
+        return (
+          <Guess
+            options={{
+              guessObject: guess,
+              monarch: monarch,
+              loading: loading,
+              setLoading: setLoading,
+              index: index,
+              variant: "number",
+            }}
+            theme={theme}
+          />
+        );
+      })}
+    </>
+  );
 };
 
 export default Guesses;

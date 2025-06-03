@@ -3,8 +3,14 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 import "./styles/MainPage.css";
 
-import { DropDown, GuessButton, Guesses, common } from "../components";
-import { getMonarch, findMonarch, getHint, getRandomMonarch } from "../helpers";
+import { DropDown, GuessButton, Guesses, Hint, common } from "../components";
+import {
+  getMonarch,
+  findMonarch,
+  getHint,
+  getRandomMonarch,
+  getIsLoading,
+} from "../helpers";
 
 import { useThing, useSearchText } from "../hooks/useThing.js";
 import config from "../config.js";
@@ -58,7 +64,8 @@ const MainPage = () => {
   const [guessCount, setGuessCount] = useState(0);
   const [guessesLeft, setGuessesLeft] = useState(MAX_GUESSES);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [loading, setLoading] = useState({});
+  const [loadingStates, setLoadingStates] = useState({});
+  const [hints, setHints] = useState([]);
 
   const [clickedCount, setClickedCount] = useState(0);
 
@@ -87,7 +94,10 @@ const MainPage = () => {
       return;
     }
 
-    setLoading((loadingStates) => ({ ...loadingStates, [guessCount]: true }));
+    setLoadingStates((loadingStates) => ({
+      ...loadingStates,
+      [guessCount]: true,
+    }));
     setGuessCount((curCount) => curCount + 1);
 
     const correct =
@@ -105,6 +115,15 @@ const MainPage = () => {
     setIsCorrect(correct);
     setGuessesLeft(guessesLeft - 1);
     setSearchText("");
+
+    console.log("is loading", getIsLoading(guesses, loadingStates));
+    setHints(
+      (prevHints) =>
+        !getIsLoading(guesses, loadingStates) && [
+          ...prevHints,
+          getHint(correctAnswer, guessCount),
+        ]
+    );
   };
 
   const handleNewGame = (canStartNewGame) => {
@@ -169,10 +188,9 @@ const MainPage = () => {
         <div className="guesses-container">
           <CorrectnessWrapper
             isCorrect={isCorrect}
-            isLoading={loading[guesses.length - 1]}
+            isLoading={loadingStates[guesses.length - 1]}
             style={{
-              correct:
-                "linear-gradient(90deg,rgba(62, 130, 49, 1) 0%, rgba(102, 199, 87, 1) 50%, rgba(64, 255, 73, 1) 100%)",
+              correct: "linear-gradient(90deg, #9ebd13 0%, #008552 100%)",
             }}
           >
             <div
@@ -183,15 +201,21 @@ const MainPage = () => {
               }}
             >
               {guessCount === MAX_GUESSES || isCorrect
-                ? `It's ${correctAnswer.name}.`
+                ? `It's ${correctAnswer.name}!`
                 : `GUESS ${MAX_GUESSES - guessesLeft + 1} of ${MAX_GUESSES}`}
             </div>
           </CorrectnessWrapper>
+          <Hint
+            isCorrect={isCorrect}
+            isLoading={getIsLoading(guesses, loadingStates)}
+            hints={hints}
+            theme={config.theme}
+          />
           <Guesses
             guesses={guesses}
             monarch={correctAnswer}
-            setLoading={setLoading}
-            loading={loading}
+            setLoading={setLoadingStates}
+            loading={loadingStates}
             isCorrect={isCorrect}
             theme={theme}
           />
