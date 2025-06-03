@@ -1,0 +1,48 @@
+.previous-guess {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 15px;
+
+  border-radius: 10px;
+  min-height: 30px;
+  gap: 5px;
+
+  border: none;
+  background: #252525;
+  font-size: 11px;
+}
+
+/* .correct,
+.incorrect, */
+.badge {
+  padding: 4px;
+  border-radius: 20px;
+}
+
+.correct {
+  background: #09ae00;
+}
+
+.incorrect {
+  background: #c62626;
+}
+
+.loading {
+  background: #828282;
+}
+
+.first-hint {
+  font-size: 11px;
+  min-width: 60px;
+}
+
+.second-hint {
+  display: flex;
+  width: 128px;
+  align-items: center;
+  justify-content: right;
+  font-size: 9px;
+  font-weight: bold;
+}

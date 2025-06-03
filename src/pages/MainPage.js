@@ -3,86 +3,18 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 import "./styles/MainPage.css";
 
-import { YearsOff, DropDownV1, GuessButton } from "../components";
+import { DropDown, GuessButton, Guesses, common } from "../components";
 import { getMonarch, findMonarch, getHint, getRandomMonarch } from "../helpers";
 
 import { useThing, useSearchText } from "../hooks/useThing.js";
-
 import config from "../config.js";
+
+const { CorrectnessWrapper } = common;
+
 const data = config.data;
+const theme = config.theme;
 
 const MAX_GUESSES = config.maxGuesses || 5;
-
-const FeedbackComponent = ({ options }) => {
-  const className = options.guessObject.correct ? "correct" : "incorrect";
-
-  const HintComponent = () => {
-    if (options.guessObject.correct || !options.guessObject.hint) {
-      return undefined;
-    }
-    return (
-      <div style={{ fontSize: "10px" }}>
-        {!options.loading[options.index] && options.guessObject.hint}
-      </div>
-    );
-  };
-
-  const Foo = () => {
-    if (options.variant === "number") {
-      return (
-        <div className={!options.loading[options.index] ? className : ""}>
-          <YearsOff
-            from={options.guessObject.guessedMonarch.reignStarted}
-            to={options.monarch.reignStarted}
-            setLoading={options.setLoading}
-            index={options.index}
-          />
-        </div>
-      );
-    }
-  };
-
-  return (
-    <div
-      className={"previous-guess"}
-      style={{ background: config.theme.secondary }}
-    >
-      <div className={"first-hint"}>{options.guessObject.value}</div>
-      <HintComponent />
-      <div className={"second-hint"}>
-        {(options.variant === "number" && (
-          <div className={!options.loading[options.index] ? className : ""}>
-            <YearsOff
-              from={options.guessObject.guessedMonarch.reignStarted}
-              to={options.monarch.reignStarted}
-              setLoading={options.setLoading}
-              index={options.index}
-            />
-          </div>
-        )) ||
-          (options.variant === "text" && <div>correct</div>)}
-        {/* <Foo /> */}
-      </div>
-    </div>
-  );
-};
-
-const PreviousGuesses = ({ guesses, monarch, setLoading, loading }) => {
-  return guesses.map((guess, index) => {
-    return (
-      <FeedbackComponent
-        options={{
-          guessObject: guess,
-          monarch: monarch,
-          loading: loading,
-          setLoading: setLoading,
-          index: index,
-          variant: "number",
-        }}
-      />
-    );
-  });
-};
 
 const Banner = ({ handleClick }) => {
   const Icon = ({ flip }) => {
@@ -217,10 +149,11 @@ const MainPage = () => {
         </div>
         <div className="guess-container">
           <div className="guess-textbox-container">
-            <DropDownV1
+            <DropDown
               data={names}
               setSearchText={setSearchText}
               placeholder={config.placeholderText}
+              theme={theme}
             />
           </div>
           <GuessButton
@@ -234,23 +167,33 @@ const MainPage = () => {
           />
         </div>
         <div className="guesses-container">
-          <div
-            className="guesses-left"
+          <CorrectnessWrapper
+            isCorrect={isCorrect}
+            isLoading={loading[guesses.length - 1]}
             style={{
-              background: config.theme.secondary,
-              borderColor: config.theme.borderColor,
+              correct:
+                "linear-gradient(90deg,rgba(62, 130, 49, 1) 0%, rgba(102, 199, 87, 1) 50%, rgba(64, 255, 73, 1) 100%)",
             }}
           >
-            {guessCount === MAX_GUESSES || isCorrect
-              ? `It's ${correctAnswer.name}.`
-              : `GUESS ${MAX_GUESSES - guessesLeft + 1} of ${MAX_GUESSES}`}
-          </div>
-          <PreviousGuesses
+            <div
+              className="guesses-left"
+              style={{
+                background: config.theme.secondary,
+                borderColor: config.theme.borderColor,
+              }}
+            >
+              {guessCount === MAX_GUESSES || isCorrect
+                ? `It's ${correctAnswer.name}.`
+                : `GUESS ${MAX_GUESSES - guessesLeft + 1} of ${MAX_GUESSES}`}
+            </div>
+          </CorrectnessWrapper>
+          <Guesses
             guesses={guesses}
             monarch={correctAnswer}
             setLoading={setLoading}
             loading={loading}
             isCorrect={isCorrect}
+            theme={theme}
           />
         </div>
       </div>

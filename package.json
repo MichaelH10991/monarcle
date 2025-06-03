@@ -32,8 +32,9 @@
     "shuffle": "node utils/shuffle.js",
     "deploy:monarcle": "./scripts/deploy.sh monarcle",
     "deploy:monarcle:local": "./scripts/deploy-local.sh monarcle",
-    "csadd": "npx @changesets/cli",
-    "csversion": "npx @changesets/cli version"
+    "changeset:add": "npx @changesets/cli",
+    "changeset:version": "changeset version && npm i",
+    "deploy": "changeset tag && ./scripts/tag.sh && ./scripts/deploy.sh monarcle"
   },
   "eslintConfig": {
     "extends": [
