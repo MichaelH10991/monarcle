@@ -1,5 +1,12 @@
 All notable changes to this project will be documented in this file.
 
+## 2.4.0
+
+### Minor Changes
+
+- 47cd77d: Updated hint logic and image styling
+- ca0cf95: Fixed previous guess container, updated colors
+
 ## 2.3.0
 
 ### Minor Changes
