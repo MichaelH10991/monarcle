@@ -10,14 +10,12 @@ const CorrectnessWrapper = ({ isCorrect, isLoading, style = {}, children }) => {
   const className = isLoading ? "loading" : isCorrect ? "correct" : "incorrect";
 
   if (React.isValidElement(children)) {
-    console.log(children);
     // const existingClass = children.props.className || "";
     const existingStyle = children.props.style || {};
     const style =
       isLoading === undefined
         ? existingStyle
         : { ...existingStyle, background: styles[className] };
-    console.log(style);
 
     return React.cloneElement(children, {
       // className: `${existingClass} ${className}`.trim(),

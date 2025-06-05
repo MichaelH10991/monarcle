@@ -7,7 +7,7 @@ module.exports = {
   variant: "number",
   theme: {
     background: "#181617",
-    secondary: "#3e3e3e",
+    secondary: "#282828",
     text: "white",
     fontFamily: "UnifrakturMaguntia",
   },
