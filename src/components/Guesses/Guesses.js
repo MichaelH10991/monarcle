@@ -17,7 +17,7 @@ const Guesses = ({ guesses, monarch, setLoading, loading, theme }) => {
             marginBottom: "5px",
           }}
         >
-          Guesses:
+          Guesses
         </div>
       )}
       <div className="previous-guesses-container">

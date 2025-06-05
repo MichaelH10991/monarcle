@@ -63,12 +63,9 @@
 
 .image-container img {
   object-fit: cover;
-  max-width: 13rem;
+  /* max-width: 13rem; */
+  height: 303px;
   border-radius: 20px;
-}
-
-.monarch-image {
-  position: relative;
 }
 
 .positive-feedback,

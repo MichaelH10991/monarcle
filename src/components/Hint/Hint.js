@@ -9,9 +9,10 @@ const Hint = ({ isCorrect, isLoading, theme = {}, hints = [] }) => {
   const previousHint = hints[hints.length - 2] || "";
   const currentHint = hints[hints.length - 1];
   const hint = isLoading ? previousHint : currentHint;
+  const hintNumber = isLoading ? hints.length - 1 : hints.length;
 
   // do not show if the answer was correct
-  if (isCorrect) {
+  if (!isLoading && isCorrect) {
     return undefined;
   }
 
@@ -22,7 +23,7 @@ const Hint = ({ isCorrect, isLoading, theme = {}, hints = [] }) => {
 
   return (
     <div className="hint" style={{ background: theme.secondary }}>
-      <div className="title">Hint: {hints.length}</div>
+      <div className="title">Hint {hintNumber}</div>
       {hint}
     </div>
   );

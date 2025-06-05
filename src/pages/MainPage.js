@@ -12,7 +12,6 @@ import {
   getIsLoading,
 } from "../helpers";
 
-import { useThing, useSearchText } from "../hooks/useThing.js";
 import config from "../config.js";
 
 const { CorrectnessWrapper } = common;
@@ -157,14 +156,10 @@ const MainPage = () => {
         )}
 
         <div className="image-container">
-          <div className="monarch-image">
-            <img
-              alt="Nice try ;)"
-              src={
-                correctAnswer.src && require("../images/" + correctAnswer.src)
-              }
-            />
-          </div>
+          <img
+            alt={config.altText}
+            src={correctAnswer.src && require("../images/" + correctAnswer.src)}
+          />
         </div>
         <div className="guess-container">
           <div className="guess-textbox-container">
