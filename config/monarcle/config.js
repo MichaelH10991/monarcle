@@ -206,19 +206,6 @@ module.exports = {
       ],
     },
     {
-      name: "Philip",
-      gender: "m",
-      src: "Philip.jpg",
-      reignStarted: "1554",
-      hints: [
-        "He became king at the age of seven and ruled for nearly 48 years, making his reign one of the longest in medieval French history.",
-        "His early years were dominated by his mother, who acted as regent until he was old enough to govern independently.",
-        "He faced conflicts with the papacy after marrying the wife of another noble, leading to his excommunication from the Church.",
-        "His rule saw the gradual strengthening of royal authority, but much of his reign was marked by struggles against ambitious nobles and external threats.",
-        "Despite his long rule, his reign was overshadowed by the rising power of the neighboring kingdom to the west, which later became a dominant force in medieval Europe.",
-      ],
-    },
-    {
       name: "Edward II",
       gender: "m",
       src: "Edward-II.jpg",
