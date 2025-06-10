@@ -71,6 +71,7 @@ const MainPage = () => {
   const [stats, setStats] = useState({}); // use to combine guessCount, guessesLeft etc
 
   const disabled = useDisabled(guessesLeft, isCorrect);
+  const isLoading = getIsLoading(guesses, loadingStates);
 
   // const [guessesLeft, setGuessesLeft, isCorrect, setIsCorrect] =
   //   useThing(config);
@@ -93,10 +94,12 @@ const MainPage = () => {
       return;
     }
 
-    setLoadingStates((loadingStates) => ({
-      ...loadingStates,
-      [guessCount]: true,
-    }));
+    if (config.variant === "number") {
+      setLoadingStates((loadingStates) => ({
+        ...loadingStates,
+        [guessCount]: "loading",
+      }));
+    }
     setGuessCount((curCount) => curCount + 1);
 
     const correct =
@@ -115,13 +118,9 @@ const MainPage = () => {
     setGuessesLeft(guessesLeft - 1);
     setSearchText("");
 
-    console.log("is loading", getIsLoading(guesses, loadingStates));
     setHints(
       (prevHints) =>
-        !getIsLoading(guesses, loadingStates) && [
-          ...prevHints,
-          getHint(correctAnswer, guessCount),
-        ]
+        !isLoading && [...prevHints, getHint(correctAnswer, guessCount)]
     );
   };
 
@@ -182,12 +181,10 @@ const MainPage = () => {
         </div>
         <div className="guesses-container">
           <CorrectnessWrapper
-            isCorrect={isCorrect}
-            isLoading={loadingStates[guesses.length - 1]}
+            state={loadingStates[guesses.length - 1]}
             style={{
-              correct: "linear-gradient(90deg, #9ebd13 0%, #008552 100%)",
-              incorrect:
-                "linear-gradient(90deg,rgba(180, 58, 131, 1) 0%, rgba(253, 29, 29, 1) 100%)",
+              correct: theme.correct,
+              incorrect: theme.incorrect,
             }}
           >
             <div
@@ -197,14 +194,14 @@ const MainPage = () => {
                 borderColor: config.theme.borderColor,
               }}
             >
-              {guessCount === MAX_GUESSES || isCorrect
+              {guessCount === MAX_GUESSES || (!isLoading && isCorrect)
                 ? `It's ${correctAnswer.name}!`
                 : `GUESS ${MAX_GUESSES - guessesLeft + 1} of ${MAX_GUESSES}`}
             </div>
           </CorrectnessWrapper>
           <Hint
             isCorrect={isCorrect}
-            isLoading={getIsLoading(guesses, loadingStates)}
+            isLoading={isLoading}
             hints={hints}
             theme={config.theme}
           />
@@ -215,6 +212,7 @@ const MainPage = () => {
             loading={loadingStates}
             isCorrect={isCorrect}
             theme={theme}
+            variant={config.variant}
           />
         </div>
       </div>

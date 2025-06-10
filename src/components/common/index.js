@@ -1,21 +1,19 @@
 import React from "react";
 
-const CorrectnessWrapper = ({ isCorrect, isLoading, style = {}, children }) => {
+const CorrectnessWrapper = ({ state, style = {}, children }) => {
   const styles = {
     correct: style.correct || "#09ae00",
     incorrect: style.incorrect || "#c62626",
     loading: style.loading || "#828282",
   };
 
-  const className = isLoading ? "loading" : isCorrect ? "correct" : "incorrect";
-
   if (React.isValidElement(children)) {
     // const existingClass = children.props.className || "";
     const existingStyle = children.props.style || {};
     const style =
-      isLoading === undefined
+      state === undefined
         ? existingStyle
-        : { ...existingStyle, background: styles[className] };
+        : { ...existingStyle, background: styles[state] };
 
     return React.cloneElement(children, {
       // className: `${existingClass} ${className}`.trim(),

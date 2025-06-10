@@ -33,3 +33,9 @@ Its a game like Wordle, but for English kings and queens, particularly medieval 
 - Make the change.
 - Commit the changes.
 - Push the changes to `develop`.
+- Merge to master
+
+# Deploy
+
+- Merge to master
+-

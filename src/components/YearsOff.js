@@ -10,26 +10,29 @@ const useNumber = () => {
 
 const wait = (ms) => new Promise((res) => setTimeout(res, ms));
 
-async function load(yearsOff, setNumber, setLoading, index) {
+async function load(yearsOff, setNumber) {
   for (var i = YEAR; i >= yearsOff; i -= SPEED) {
     setNumber(i);
     await wait(50);
   }
   setNumber(yearsOff);
-  setLoading((loadingStates) => ({ ...loadingStates, [index]: false }));
 }
 
-const YearsOff = ({ from, to, setLoading, index }) => {
+const YearsOff = ({ from, to, setLoading, index, isCorrect }) => {
   const [number, setNumber] = useState();
 
   const yearsOff = Math.abs(from - to);
 
   useEffect(() => {
     async function doThing() {
-      await load(yearsOff, setNumber, setLoading, index);
+      await load(yearsOff, setNumber);
+      setLoading((loadingStates) => ({
+        ...loadingStates,
+        [index]: isCorrect ? "correct" : "incorrect",
+      }));
     }
     doThing();
-  }, [index, yearsOff, setLoading]);
+  }, [index, yearsOff, setLoading, isCorrect]);
 
   return `${number} yrs`;
 };

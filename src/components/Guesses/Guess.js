@@ -33,6 +33,7 @@ const Guess = ({ options, theme }) => {
           to={options.monarch.reignStarted}
           setLoading={options.setLoading}
           index={options.index}
+          isCorrect={isCorrect}
         />
       );
       break;
@@ -46,9 +47,8 @@ const Guess = ({ options, theme }) => {
       <div className={"first-hint"}>
         {options.guessObject.value} - r.{reignStarted} - {reignEnded}
       </div>
-      {/* <HintComponent isCorrect={isCorrect} isLoading={isLoading} hint={hint} /> */}
       <div className={"second-hint"}>
-        <CorrectnessWrapper isCorrect={isCorrect} isLoading={isLoading}>
+        <CorrectnessWrapper state={isLoading}>
           <Badge>{variant}</Badge>
         </CorrectnessWrapper>
       </div>

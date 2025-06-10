@@ -8,6 +8,9 @@ module.exports = {
     secondary: "#282828",
     text: "white",
     fontFamily: "UnifrakturMaguntia",
+    correct: "linear-gradient(90deg, #9ebd13 0%, #008552 100%)",
+    incorrect:
+      "linear-gradient(90deg,rgba(180, 58, 131, 1) 0%, rgba(253, 29, 29, 1) 100%)",
   },
   data: [
     {

@@ -23,7 +23,7 @@ export default function ComboBox({ data, setSearchText, placeholder, theme }) {
         setInputValue(newInputValue);
         setSearchText(newInputValue);
       }}
-      options={unique}
+      options={inputValue && inputValue.length > 0 ? unique : []}
       fullWidth
       freeSolo
       sx={{
@@ -35,7 +35,7 @@ export default function ComboBox({ data, setSearchText, placeholder, theme }) {
           borderRadius: "10px",
         },
         "& .MuiFormLabel-root": {
-          color: "lightgrey",
+          color: "white",
           "&.Mui-focused": {
             color: "white",
           },

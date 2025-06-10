@@ -6,7 +6,7 @@ import "./Guesses.css";
  * @param {Object} props - The Guesses props
  * @returns {Component} - An Array of Guess components
  */
-const Guesses = ({ guesses, monarch, setLoading, loading, theme }) => {
+const Guesses = ({ guesses, monarch, setLoading, loading, theme, variant }) => {
   return (
     <div>
       {guesses.length > 0 && (
@@ -30,7 +30,7 @@ const Guesses = ({ guesses, monarch, setLoading, loading, theme }) => {
                 loading: loading,
                 setLoading: setLoading,
                 index: index,
-                variant: "number",
+                variant,
               }}
               theme={theme}
             />

@@ -32,7 +32,7 @@ const getHint = (monarch, guessCount) =>
  * @returns {Boolean} - Whether guess is loading
  */
 const getIsLoading = (guesses, loadingStates) => {
-  return loadingStates[guesses.length - 1];
+  return loadingStates[guesses.length - 1] === "loading";
 };
 
 export {
