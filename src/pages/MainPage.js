@@ -137,6 +137,10 @@ const MainPage = () => {
     if (canStartNewGame) {
       setClickedCount(0);
       handleNewGame(canStartNewGame);
+      setHints([]);
+      setGuesses([]);
+      setGuessCount(0);
+      setGuessCount(0);
     } else {
       setClickedCount((count) => (count += 1));
     }
