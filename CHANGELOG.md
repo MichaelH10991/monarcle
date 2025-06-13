@@ -1,5 +1,16 @@
 All notable changes to this project will be documented in this file.
 
+## 2.5.0
+
+### Minor Changes
+
+- fb645e1: updated how state works, minor updates
+
+### Patch Changes
+
+- 100d5f8: removed philip because he's not an english king
+- 7f4b43e: Reset the state when changed
+
 ## 2.4.0
 
 ### Minor Changes
